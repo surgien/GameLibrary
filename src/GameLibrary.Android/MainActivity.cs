@@ -1,19 +1,22 @@
 ﻿using Android.App;
 using Android.Widget;
 using Android.OS;
+using Xamarin.Forms.Platform.Android;
+using GameLibrary.Client.UI;
 
 namespace GameLibrary.Android
 {
     [Activity(Label = "GameLibrary.Android", MainLauncher = true, Icon = "@drawable/icon")]
-    public class MainActivity : Activity
+    public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
+            TabLayoutResource = Resource.Layout.Tabbar;
+            ToolbarResource = Resource.Layout.Toolbar;
 
-            // Set our view from the "main" layout resource
-            // SetContentView (Resource.Layout.Main);
+            base.OnCreate(bundle);
+            Xamarin.Forms.Forms.Init(this, bundle);
+            LoadApplication(new App());
         }
     }
 }
-
