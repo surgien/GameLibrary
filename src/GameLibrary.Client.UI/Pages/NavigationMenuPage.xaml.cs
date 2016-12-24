@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameLibrary.Client.Core.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,53 +13,13 @@ namespace GameLibrary.Client.UI
     {
         public ListView ListView { get { return NavigationListView; } }
         public ListView SettingsListView { get { return NavigationSettingsListView; } }
+        private MainNavigationViewModel vm;
 
         public NavigationMenuPage()
         {
             InitializeComponent();
 
-            var masterPageItems = new List<MasterPageItem>();
-            masterPageItems.Add(new MasterPageItem
-            {
-                Title = "Last searched",
-                IconSource = "\uE8EF;",
-                IconGlyphText = "\uE773",
-                TargetType = typeof(ContactsPage)
-            });
-            masterPageItems.Add(new MasterPageItem
-            {
-                Title = "Watchlist",
-                IconSource = "asdasd",
-                IconGlyphText = "\uE728",
-                TargetType = typeof(Testpage)
-            });
-            masterPageItems.Add(new MasterPageItem
-            {
-                Title = "Archive",
-                IconSource = "asdasd",
-                IconGlyphText = "\uE82D",
-                TargetType = typeof(ContactsPage)
-            });
-            masterPageItems.Add(new MasterPageItem
-            {
-                Title = "Next Releases",
-                IconSource = "asdasd",
-                IconGlyphText = "\uEE93",
-                TargetType = typeof(ContactsPage)
-            });
-
-            NavigationSettingsListView.ItemsSource = new List<MasterPageItem>() { new MasterPageItem() { Title = "Settings",
-                IconGlyphText = "\uE115",
-                TargetType = typeof(ContactsPage) } };
-
-            //SettingsNavigationMenu.Content = new MasterPageItem()
-            //{
-            //    Title = "Settings",
-            //    IconGlyphText = "\uE115",
-            //    TargetType = typeof(ContactsPage)
-            //};
-
-            NavigationListView.ItemsSource = masterPageItems;
+            BindingContext = vm = new MainNavigationViewModel(Navigation);
         }
     }
 }

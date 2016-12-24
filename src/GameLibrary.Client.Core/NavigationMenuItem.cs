@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace GameLibrary.Client.UI
+namespace GameLibrary.Client.Core.ViewModel
 {
-    internal class MasterPageItem
+    public class NavigationMenuItem
     {
         public string IconSource { get; set; }
-        public Type TargetType { get; set; }
+        public Type TargetViewModelType { get; set; }
         public string Title { get; set; }
         public string IconGlyphText { get; set; }
     }

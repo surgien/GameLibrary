@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameLibrary.Client.Core.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,11 @@ namespace GameLibrary.Client.UI
 {
     public partial class MainPage : MasterDetailPage
     {
+        Dictionary<Type, Page> pages;
+
         public MainPage()
         {
+            pages = new Dictionary<Type, Page>();
             InitializeComponent();
 
             masterPage.ListView.ItemSelected += OnItemSelected;
@@ -19,18 +23,36 @@ namespace GameLibrary.Client.UI
 
         private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var item = e.SelectedItem as MasterPageItem;
+            var item = e.SelectedItem as NavigationMenuItem;
             if (item != null)
             {
-                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
-                masterPage.ListView.SelectedItem = null;
-                masterPage.SettingsListView.SelectedItem = null;
+                Navigate(item.TargetViewModelType);
+            }
+        }
 
-                //TODO: Einhetiliches Verfahrens für Auswertung ob aktuell als Overlay dargestellt wird
-                if (Bounds.Width < 400)
+        public void Navigate(Type viewModelType)
+        {
+            if (!pages.ContainsKey(viewModelType))
+            {
+                //only cache specific pages
+                if (viewModelType.Equals(typeof(GameArchiveViewModel)))
                 {
-                    IsPresented = false;
+                    pages.Add(viewModelType, new ContactsPage());
                 }
+                else if (viewModelType.Equals(typeof(WatchlistViewModel)))
+                {
+                    pages.Add(viewModelType, new Testpage());
+                }
+            }
+
+            Detail = pages[viewModelType];
+            masterPage.ListView.SelectedItem = null;
+            masterPage.SettingsListView.SelectedItem = null;
+
+            //TODO: Einhetiliches Verfahrens für Auswertung ob aktuell als Overlay dargestellt wird
+            if (Bounds.Width < 400)
+            {
+                IsPresented = false;
             }
         }
     }
