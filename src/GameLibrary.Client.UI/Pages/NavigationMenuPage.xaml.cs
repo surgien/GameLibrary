@@ -11,6 +11,7 @@ namespace GameLibrary.Client.UI
     public partial class NavigationMenuPage : ContentPage
     {
         public ListView ListView { get { return NavigationListView; } }
+        public ListView SettingsListView { get { return NavigationSettingsListView; } }
 
         public NavigationMenuPage()
         {
@@ -45,6 +46,17 @@ namespace GameLibrary.Client.UI
                 IconGlyphText = "\uEE93",
                 TargetType = typeof(ContactsPage)
             });
+
+            NavigationSettingsListView.ItemsSource = new List<MasterPageItem>() { new MasterPageItem() { Title = "Settings",
+                IconGlyphText = "\uE115",
+                TargetType = typeof(ContactsPage) } };
+
+            //SettingsNavigationMenu.Content = new MasterPageItem()
+            //{
+            //    Title = "Settings",
+            //    IconGlyphText = "\uE115",
+            //    TargetType = typeof(ContactsPage)
+            //};
 
             NavigationListView.ItemsSource = masterPageItems;
         }

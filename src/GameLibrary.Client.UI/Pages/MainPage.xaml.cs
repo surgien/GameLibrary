@@ -14,6 +14,7 @@ namespace GameLibrary.Client.UI
             InitializeComponent();
 
             masterPage.ListView.ItemSelected += OnItemSelected;
+            masterPage.SettingsListView.ItemSelected += OnItemSelected;
         }
 
         private void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -23,6 +24,7 @@ namespace GameLibrary.Client.UI
             {
                 Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType));
                 masterPage.ListView.SelectedItem = null;
+                masterPage.SettingsListView.SelectedItem = null;
 
                 //TODO: Einhetiliches Verfahrens für Auswertung ob aktuell als Overlay dargestellt wird
                 if (Bounds.Width < 400)

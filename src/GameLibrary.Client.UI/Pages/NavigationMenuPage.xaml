@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameLibrary.Client.UI.NavigationMenuPage"
+             Padding="0,40,0,0"
+             xmlns:local="clr-namespace:GameLibrary.Client.UI"
+             Icon="hamburger.png"
+             Title="Game Library">
+  <ContentPage.Content>
+
+
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <StackLayout Grid.Row="0">
+        <SearchBar Placeholder="Search Games" Margin="10,0"/>
+      </StackLayout>
+
+      <StackLayout Grid.Row="1">
+        <ListView x:Name="NavigationListView" SeparatorVisibility="None">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <local:NavigationMenuCell Text="{Binding Title}" IconGlyph="{Binding IconGlyphText}" ImageSource="" />
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+      </StackLayout>
+
+      <StackLayout VerticalOptions="LayoutOptions.EndAndExpand" Grid.Row="2">
+
+        <!--<ContentView x:Name="SettingsNavigationMenu">
+            <ContentView.ControlTemplate>
+              <local:NavigationMenuCell Text="{Binding Title}" IconGlyph="{Binding IconGlyphText}" ImageSource="" />
+            </ContentView.ControlTemplate>
+          </ContentView>-->
+
+        <ListView x:Name="NavigationSettingsListView" VerticalOptions="LayoutOptions.EndAndExpand" RowHeight="45">
+          <ListView.ItemTemplate>
+            <DataTemplate>
+              <local:NavigationMenuCell Text="{Binding Title}" IconGlyph="{Binding IconGlyphText}" ImageSource="" />
+            </DataTemplate>
+          </ListView.ItemTemplate>
+        </ListView>
+
+      </StackLayout>
+    </Grid>
+  </ContentPage.Content>
+</ContentPage>

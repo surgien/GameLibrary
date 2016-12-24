@@ -16,6 +16,7 @@ namespace GameLibrary.UWP
 {
     /// <summary>
     /// Renderer für Steuerung der Menüstruktur
+    /// 
     /// </summary>
     public class NavigationMenuPageRenderer : PageRenderer
     {
