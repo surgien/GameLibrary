@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Client.Core.ViewModel;
+using GameLibrary.Client.UI.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,11 +38,11 @@ namespace GameLibrary.Client.UI
                 //only cache specific pages
                 if (viewModelType.Equals(typeof(GameArchiveViewModel)))
                 {
-                    pages.Add(viewModelType, new ContactsPage());
+                    pages.Add(viewModelType, new GameArchivePage());
                 }
                 else if (viewModelType.Equals(typeof(WatchlistViewModel)))
                 {
-                    pages.Add(viewModelType, new Testpage());
+                    pages.Add(viewModelType, new WatchlistPage());
                 }
             }
 
