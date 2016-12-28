@@ -1,5 +1,6 @@
 ﻿using FormsToolkit;
 using GamesLibrary.Client.Core;
+using GamesLibrary.Client.Core.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,20 @@ namespace GamesLibrary.Client.UI
 {
     public partial class App : Application
     {
+        private MainPage _mainPage;
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            _mainPage = new MainPage();
+            MainPage = _mainPage;
         }
 
         protected override void OnStart()
         {
             OnResume();
+
+            //Homelocation on Start
+            _mainPage.Navigate(typeof(WatchlistViewModel));
         }
 
         protected override void OnSleep()

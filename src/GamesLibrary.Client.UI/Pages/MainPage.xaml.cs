@@ -1,6 +1,7 @@
 ﻿using GamesLibrary.Client.Core.ViewModel;
 using GamesLibrary.Client.UI.Pages;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,11 +28,27 @@ namespace GamesLibrary.Client.UI
             var item = e.SelectedItem as NavigationMenuItem;
             if (item != null)
             {
-                Navigate(item.TargetViewModelType);
+                NavigateCore(item.TargetViewModelType);
             }
         }
 
+        /// <summary>
+        /// Public Navigation
+        /// </summary>
+        /// <param name="viewModelType"></param>
         public void Navigate(Type viewModelType)
+        {
+            var vm = (MainNavigationViewModel)masterPage.BindingContext;
+            var page = vm.NavigationMenuItems.Where(item => item.TargetViewModelType.Equals(viewModelType)).Single();
+
+            masterPage.ListView.SelectedItem = page;
+        }
+
+        /// <summary>
+        /// Private navigationlogic for UI-Sync and Page creation
+        /// </summary>
+        /// <param name="viewModelType"></param>
+        private void NavigateCore(Type viewModelType)
         {
             if (!pages.ContainsKey(viewModelType))
             {
@@ -45,16 +62,18 @@ namespace GamesLibrary.Client.UI
                     pages.Add(viewModelType, new WatchlistPage());
                 }
             }
-
-            Detail = new NavigationPage(pages[viewModelType]);
+            var page = pages[viewModelType];
+            Detail = new NavigationPage(page);
             masterPage.ListView.SelectedItem = null;
             masterPage.SettingsListView.SelectedItem = null;
 
-            //TODO: Einhetiliches Verfahrens für Auswertung ob aktuell als Overlay dargestellt wird
-            if (Bounds.Width < 400)
+            if (Device.Idiom == TargetIdiom.Phone)
             {
                 IsPresented = false;
+                Detail.ToolbarItems.Add(new ToolbarItem() { Priority = 10, Name = "Search", Command = new Command(() => IsPresented = true) });
             }
+
+            Detail.ToolbarItems.Add(new ToolbarItem() { Priority = 10, Name = "TEST", Command = new Command(() => Navigate(typeof(WatchlistViewModel))) });
         }
     }
 }

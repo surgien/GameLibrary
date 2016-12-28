@@ -7,8 +7,8 @@
     <ProjectGuid>{BF62EA2D-6B26-4A5E-A8EF-B25E05028CB9}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameLibrary.UWP</RootNamespace>
-    <AssemblyName>GameLibrary.UWP</AssemblyName>
+    <RootNamespace>GamesLibrary.UWP</RootNamespace>
+    <AssemblyName>GamesLibrary.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="NavigationMenuPageRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DependencyPropertyWatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

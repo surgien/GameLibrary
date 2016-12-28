@@ -8,8 +8,8 @@
     <ProjectGuid>{4C86F900-0915-4FC1-8B6B-C5B413DF394B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameLibrary.DataStore.Local</RootNamespace>
-    <AssemblyName>GameLibrary.DataStore.Local</AssemblyName>
+    <RootNamespace>GamesLibrary.DataStore.Local</RootNamespace>
+    <AssemblyName>GamesLibrary.DataStore.Local</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

@@ -8,8 +8,8 @@
     <ProjectGuid>{7A7A5BAF-2161-41A9-BF07-A3FAA5656189}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameLibrary.Client.UI</RootNamespace>
-    <AssemblyName>GameLibrary.Client.UI</AssemblyName>
+    <RootNamespace>GamesLibrary.Client.UI</RootNamespace>
+    <AssemblyName>GamesLibrary.Client.UI</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -58,6 +58,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NavigationMenuListView.cs" />
     <Compile Include="Pages\ContactsPage.xaml.cs">
       <DependentUpon>ContactsPage.xaml</DependentUpon>
     </Compile>

@@ -20,23 +20,23 @@
       </StackLayout>
 
       <StackLayout Grid.Row="1">
-        <ListView x:Name="NavigationListView" SeparatorVisibility="None" ItemsSource="{Binding NavigationMenuItems}">
+        <local:NavigationMenuListView x:Name="NavigationListView" SeparatorVisibility="None" ItemsSource="{Binding NavigationMenuItems}">
           <ListView.ItemTemplate>
             <DataTemplate>
               <local:NavigationMenuCell Text="{Binding Title}" IconGlyph="{Binding IconGlyphText}" ImageSource="" />
             </DataTemplate>
           </ListView.ItemTemplate>
-        </ListView>
+        </local:NavigationMenuListView>
       </StackLayout>
 
       <StackLayout VerticalOptions="LayoutOptions.EndAndExpand" Grid.Row="2">
-        <ListView x:Name="NavigationSettingsListView" ItemsSource="{Binding NavigationSettingsMenuItems}" VerticalOptions="LayoutOptions.EndAndExpand" RowHeight="45">
+        <local:NavigationMenuListView x:Name="NavigationSettingsListView" ItemsSource="{Binding NavigationSettingsMenuItems}" VerticalOptions="LayoutOptions.EndAndExpand" RowHeight="45">
           <ListView.ItemTemplate>
             <DataTemplate>
               <local:NavigationMenuCell Text="{Binding Title}" IconGlyph="{Binding IconGlyphText}" ImageSource="" />
             </DataTemplate>
           </ListView.ItemTemplate>
-        </ListView>
+        </local:NavigationMenuListView>
       </StackLayout>
     </Grid>
   </ContentPage.Content>
