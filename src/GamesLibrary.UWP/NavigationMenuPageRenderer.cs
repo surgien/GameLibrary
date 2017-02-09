@@ -1,15 +1,10 @@
 ﻿using GamesLibrary.Client.UI;
 using GamesLibrary.UWP;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using uwp = Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 using Windows.UI.Xaml;
-using GamesLibrary.Client.UI;
 using Windows.UI.Xaml.Media;
 
 [assembly: ExportRenderer(typeof(NavigationMenuPage), typeof(NavigationMenuPageRenderer))]

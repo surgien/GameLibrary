@@ -3,6 +3,7 @@ using Android.OS;
 using Xamarin.Forms.Platform.Android;
 using GamesLibrary.Client.UI;
 using Android.Content.PM;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace GamesLibrary.Android
 {
@@ -16,6 +17,7 @@ namespace GamesLibrary.Android
 
             base.OnCreate(bundle);
             Xamarin.Forms.Forms.Init(this, bundle);
+            ImageCircleRenderer.Init();
             LoadApplication(new App());
         }
     }

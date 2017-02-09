@@ -1,10 +1,109 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GamesLibrary.Client.UI"
+             xmlns:imagecircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
              x:Class="GamesLibrary.Client.UI.Pages.WatchlistPage">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:ReleaseDayNumberDisplayConverter x:Key="ReleaseDayNumberDisplayConverter" />
+      <!--<local:EventColorDisplayConverter x:Key="EventColorDisplayConverter" />-->
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
   <ContentPage.ToolbarItems>
-    <ToolbarItem Name="Menu1" Order="Primary" Priority="0" />
+    <ToolbarItem Name="Menu1" Order="Primary" Priority="0"/>
   </ContentPage.ToolbarItems>
-  
-  <Label Text="watchlist" VerticalOptions="Center" HorizontalOptions="Center" />
+
+  <ListView ItemsSource="{Binding GroupedWatchlist}"
+            IsGroupingEnabled="True"
+            GroupDisplayBinding="{Binding Key.Name}"
+            GroupShortNameBinding ="{Binding Key.ShortName}"
+            HasUnevenRows="True">
+
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <Grid Padding="16,6,16,6" ColumnSpacing="16">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout>
+              <Grid HeightRequest="75"
+                  WidthRequest="75">
+                <!--TODO: Set color depent on current ApplicationTheme in Settings-->
+                <BoxView Color="#353535" />
+                <Image HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand"
+                         Aspect="AspectFill">
+                  <Image.Source>
+                    <UriImageSource Uri="{Binding ImageUri}"
+                        CacheValidity="3"
+                        CachingEnabled="true"/>
+                  </Image.Source>
+                </Image>
+
+                <!--<Grid HeightRequest="30" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                  <BoxView Color="#000000"  Opacity="0.5" />
+                  <Label Text="{Binding  ReleaseDate, Converter={StaticResource ReleaseDayNumberDisplayConverter}}"
+                         VerticalTextAlignment="Center"
+                         HorizontalTextAlignment="Center"
+                         Style="{DynamicResource BodyStyle}"
+                         TextColor="White"
+                         StyleId="EventItemCircleDate"/>
+                </Grid>-->
+
+                <Grid Margin="2" WidthRequest="37" HeightRequest="37" HorizontalOptions="Start" VerticalOptions="Start">
+                  <imagecircle:CircleImage WidthRequest="37" Opacity="0.4"
+                      FillColor="#D3D2D2"/>
+
+                  <!--<imagecircle:CircleImage WidthRequest="20" Opacity="1" HorizontalOptions="End"
+                      FillColor="#D3D2D2"/>
+                  <imagecircle:CircleImage WidthRequest="20" Opacity="1" HorizontalOptions="Start"
+                  FillColor="#D3D2D2"/>
+                  <BoxView WidthRequest="20" Opacity="1" HorizontalOptions="Center"
+                  Color="#D3D2D2"/>-->
+                  
+                  <Label Text="{Binding  ReleaseDate, Converter={StaticResource ReleaseDayNumberDisplayConverter}}"
+                         VerticalTextAlignment="Center"
+                         HorizontalTextAlignment="Center"
+                         Style="{DynamicResource BodyStyle}"
+                         TextColor="White"
+                         StyleId="EventItemCircleDate"/>
+                </Grid>
+              </Grid>
+              <!--<Label Text="FEB"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"
+                                       Style="{DynamicResource CustomListItemTextStyle}"
+                                       TextColor="White"
+                                       StyleId="EventItemCircleDate"/>-->
+
+            </StackLayout>
+
+
+            <Grid Grid.Column="1">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+              </Grid.RowDefinitions>
+
+              <Label
+                VerticalOptions="End"
+                LineBreakMode="NoWrap"
+                  Text="{Binding Title}"
+                  Style="{DynamicResource CustomListItemTextStyle}"/>
+
+              <Label Grid.Row="1"
+                  Text="{Binding Developer}"
+                  Style="{DynamicResource CustomListItemDetailTextStyle}"/>
+            </Grid>
+
+          </Grid>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
 </ContentPage>

@@ -1,4 +1,4 @@
-﻿using MvvmHelpers;
+﻿using GamesLibrary.DataStore.Model;
 using Xamarin.Forms;
 
 namespace GamesLibrary.Client.Core.ViewModel

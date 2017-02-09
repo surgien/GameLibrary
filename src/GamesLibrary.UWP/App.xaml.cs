@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GamesLibrary.Client.Core;
+using ImageCircle.Forms.Plugin.UWP;
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
@@ -37,6 +39,10 @@ namespace GamesLibrary.UWP
 #endif
             Frame rootFrame = Window.Current.Content as Frame;
 
+            if (RequestedTheme == Windows.UI.Xaml.ApplicationTheme.Dark)
+            {
+                Settings.CurrentTheme = Client.Core.ApplicationTheme.Dark;
+            }
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
@@ -47,6 +53,7 @@ namespace GamesLibrary.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
                 Xamarin.Forms.Forms.Init(e);
+                ImageCircleRenderer.Init();
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

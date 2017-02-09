@@ -28,7 +28,7 @@ namespace GamesLibrary.Client.Core.ViewModel
             });
             masterPageItems.Add(new NavigationMenuItem
             {
-                Title = "Archive",
+                Title = "My Library",
                 IconSource = "asdasd",
                 IconGlyphText = "\uE82D",
                 TargetViewModelType = typeof(GameArchiveViewModel)

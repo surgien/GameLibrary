@@ -19,5 +19,12 @@ namespace GamesLibrary.Client.UI.Pages
 
             BindingContext = vm = new WatchlistViewModel(Navigation);
         }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            await vm.LoadAsync();
+        }
     }
 }

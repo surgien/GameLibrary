@@ -1,4 +1,5 @@
-﻿using GamesLibrary.Client.Core.ViewModel;
+﻿using GamesLibrary.Client.Core;
+using GamesLibrary.Client.Core.ViewModel;
 using GamesLibrary.Client.UI.Pages;
 using System;
 using System.Collections;
@@ -28,7 +29,7 @@ namespace GamesLibrary.Client.UI
             var item = e.SelectedItem as NavigationMenuItem;
             if (item != null)
             {
-                NavigateCore(item.TargetViewModelType);
+                NavigateCore(item.TargetViewModelType, item.Title);
             }
         }
 
@@ -41,14 +42,30 @@ namespace GamesLibrary.Client.UI
             var vm = (MainNavigationViewModel)masterPage.BindingContext;
             var page = vm.NavigationMenuItems.Where(item => item.TargetViewModelType.Equals(viewModelType)).Single();
 
-            masterPage.ListView.SelectedItem = page;
+            if (Device.OS == TargetPlatform.Android)
+            {
+                //no radiobuttons or persistent selecteditems in menu for android
+                NavigateCore(viewModelType, page.Title);
+            }
+            else
+            {
+                masterPage.ListView.SelectedItem = page;
+            }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            masterPage.ListView.SelectedItem = null;
+            masterPage.SettingsListView.SelectedItem = null;
         }
 
         /// <summary>
-        /// Private navigationlogic for UI-Sync and Page creation
+        /// Private navigationlogic for UI-Sync, Page creation and View-ViewModel-Mappings
         /// </summary>
         /// <param name="viewModelType"></param>
-        private void NavigateCore(Type viewModelType)
+        private void NavigateCore(Type viewModelType, string title)
         {
             if (!pages.ContainsKey(viewModelType))
             {
@@ -63,17 +80,28 @@ namespace GamesLibrary.Client.UI
                 }
             }
             var page = pages[viewModelType];
-            Detail = new NavigationPage(page);
+            var detailPage = new NavigationPage(page);
             masterPage.ListView.SelectedItem = null;
             masterPage.SettingsListView.SelectedItem = null;
 
             if (Device.Idiom == TargetIdiom.Phone)
             {
                 IsPresented = false;
-                Detail.ToolbarItems.Add(new ToolbarItem() { Priority = 10, Name = "Search", Command = new Command(() => IsPresented = true) });
+                detailPage.ToolbarItems.Add(new ToolbarItem() { Priority = 10, Name = "Search", Command = new Command(() => IsPresented = true) });
             }
 
-            Detail.ToolbarItems.Add(new ToolbarItem() { Priority = 10, Name = "TEST", Command = new Command(() => Navigate(typeof(WatchlistViewModel))) });
+            if (Settings.CurrentTheme == ApplicationTheme.Dark)
+            {
+                detailPage.BarBackgroundColor = Color.FromHex("171717");
+            }
+
+            if (Device.OS == TargetPlatform.Windows)
+            {
+                page.Padding = new Thickness(10, 10);
+            }
+
+            page.Title = title;
+            Detail = detailPage;
         }
     }
 }

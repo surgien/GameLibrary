@@ -41,6 +41,10 @@
       <Project>{034dcc92-068d-44a7-9daa-8597daefa985}</Project>
       <Name>GamesLibrary.DataStore.Definitions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GamesLibrary.DataStore.Mocks\GamesLibrary.DataStore.Mocks.csproj">
+      <Project>{58A8AD74-E3F9-42ED-80A0-C611DE3CFF50}</Project>
+      <Name>GamesLibrary.DataStore.Mocks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GamesLibrary.DataStore.Model\GamesLibrary.DataStore.Model.csproj">
       <Project>{a44df5ef-47af-4bf1-bb81-9509233c4bfd}</Project>
       <Name>GamesLibrary.DataStore.Model</Name>
@@ -50,18 +54,16 @@
     <Compile Include="MessageKeys.cs" />
     <Compile Include="NavigationMenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="ViewModel\Frame\BaseViewModel.cs" />
     <Compile Include="ViewModel\GameArchiveViewModel.cs" />
-    <Compile Include="ViewModel\MainNavigationViewModel.cs" />
+    <Compile Include="ViewModel\Frame\MainNavigationViewModel.cs" />
+    <Compile Include="ViewModel\QuarterDate.cs" />
     <Compile Include="ViewModel\WatchlistViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FormsToolkit, Version=1.1.18.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FormsToolkit.1.1.18\lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\FormsToolkit.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmHelpers, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Refractored.MvvmHelpers.1.1.0\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\MvvmHelpers.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -78,7 +80,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
