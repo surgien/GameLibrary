@@ -1,30 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GamesLibrary.Client.UI"
              x:Class="GamesLibrary.Client.UI.Pages.GameArchivePage">
-  <ContentPage.ToolbarItems>
-    <ToolbarItem Name="Menu1" Order="Primary" Priority="0" />
-    <ToolbarItem Name="Menu2" Order="Primary" Priority="1" />
-  </ContentPage.ToolbarItems>
+    <ContentPage.ToolbarItems>
+        <local:IconToolbarItem Name="Select" IconGlyph="&#xE133;" Order="Primary" Priority="0" />
+        <local:IconToolbarItem Command="{Binding FollowGameCommand}"  
+                               Name="Follow" 
+                               IconGlyph="{Binding FollowGameCommand.Icon}"
+                               Order="Primary" Priority="1" />
+    </ContentPage.ToolbarItems>
 
-  <StackLayout>
-    
-  <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
+    <StackLayout>
+
+        <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
          Style="{DynamicResource BodyStyle}"/>
 
-  <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
+        <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
          Style="{DynamicResource CaptionStyle}"/>
 
-  <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
+        <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
          Style="{DynamicResource ListItemDetailTextStyle}"/>
 
-  <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
+        <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
          Style="{DynamicResource ListItemTextStyle}"/>
 
-  <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
+        <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
          Style="{DynamicResource SubtitleStyle}"/>
-  <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
+        <Label Text="buumbuum" VerticalOptions="Center" HorizontalOptions="Center"
          Style="{DynamicResource TitleStyle}"/>
-  </StackLayout>
+    </StackLayout>
 
 </ContentPage>

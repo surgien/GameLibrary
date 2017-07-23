@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GamesLibrary.Client.UI;
+using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace GamesLibrary.Client.UI
 {
-    public class NavigationMenuCell: ImageCell
+    /// <summary>
+    /// ToolbarItem-Extension with IconGlyph
+    /// </summary>
+    public class IconToolbarItem : ToolbarItem
     {
         public static readonly BindableProperty IconGlyphProperty =
   BindableProperty.Create("IconGlyph", typeof(string), typeof(NavigationMenuPage), null);
 
         /// <summary>
-        /// Glyphicon in hamburgermenu
+        /// Glyphicon in CommandBar
         /// </summary>
         public string IconGlyph
         {

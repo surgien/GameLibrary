@@ -2,19 +2,19 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GamesLibrary.Client.UI.App">
-  <Application.Resources>
-    <ResourceDictionary>
-      <!-- Application resource dictionary -->
-      <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="16" WinPhone="13" x:Key="EvolveListItemTextStyleSize" />
-      <OnPlatform x:TypeArguments="x:Double" Android="13" iOS="13" WinPhone="13" x:Key="EvolveListItemDetailTextStyleSize" />
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Application resource dictionary -->
+            <OnPlatform x:TypeArguments="x:Double" Android="16" iOS="16" WinPhone="13" x:Key="EvolveListItemTextStyleSize" />
+            <OnPlatform x:TypeArguments="x:Double" Android="13" iOS="13" WinPhone="13" x:Key="EvolveListItemDetailTextStyleSize" />
 
-      <Style x:Key="CustomListItemTextStyle" TargetType="Label" BaseResourceKey="ListItemTextStyle">
-        <Setter Property="FontSize" Value="{DynamicResource EvolveListItemTextStyleSize}" />
-      </Style>
+            <Style x:Key="CustomListItemTextStyle" TargetType="Label" BaseResourceKey="ListItemTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource EvolveListItemTextStyleSize}" />
+            </Style>
 
-      <Style x:Key="CustomListItemDetailTextStyle" TargetType="Label" BaseResourceKey="ListItemDetailTextStyle">
-        <Setter Property="FontSize" Value="{DynamicResource EvolveListItemDetailTextStyleSize}" />
-      </Style>
-    </ResourceDictionary>
-  </Application.Resources>
+            <Style x:Key="CustomListItemDetailTextStyle" TargetType="Label" BaseResourceKey="ListItemDetailTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource EvolveListItemDetailTextStyleSize}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

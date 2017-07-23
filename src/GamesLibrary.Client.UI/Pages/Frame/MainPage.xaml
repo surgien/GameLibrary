@@ -4,11 +4,11 @@
                   xmlns:local="clr-namespace:GamesLibrary.Client.UI"
                   x:Class="GamesLibrary.Client.UI.MainPage"
              MasterBehavior="Default">
-  <MasterDetailPage.Master>
-    <local:NavigationMenuPage x:Name="masterPage" />
-  </MasterDetailPage.Master>
-  <MasterDetailPage.Detail>
-    <!--Set HomePage in App.OnStart-->
-    <NavigationPage/>
-  </MasterDetailPage.Detail>
+    <MasterDetailPage.Master>
+        <local:NavigationMenuPage x:Name="masterPage" />
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <!--Set HomePage in App.OnStart-->
+        <NavigationPage/>
+    </MasterDetailPage.Detail>
 </MasterDetailPage>

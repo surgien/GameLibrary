@@ -95,9 +95,11 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NavigationMenuPageRenderer.cs" />
+    <Compile Include="Renderer\IconNavigationPageRenderer.cs" />
+    <Compile Include="Renderer\NavigationMenuPageRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DependencyPropertyWatcher.cs" />
+    <Compile Include="Renderer\VisualTreeHelperExtender.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
