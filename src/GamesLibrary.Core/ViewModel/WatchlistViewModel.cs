@@ -22,7 +22,7 @@ namespace GamesLibrary.Client.Core.ViewModel
         //TODO: Build infrastructure for async loading
         public async Task LoadAsync()
         {
-            //TODO: !!!inject via DI the datastore. This is in the IoC-Pattern NOT allowed!!!
+            //TODO: !!!inject via DI the datastore. This is in the IoC-Pattern NOT allowed!!! (Dann kann auch die Reference auf die DLL Mocks raus!)
             var store = new UserDataStore();
 
             var list = await store.GetWatchlistAsync(null);

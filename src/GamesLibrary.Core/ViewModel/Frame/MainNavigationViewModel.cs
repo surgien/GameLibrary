@@ -1,5 +1,4 @@
-﻿using FormsToolkit;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -81,13 +80,14 @@ namespace GamesLibrary.Client.Core.ViewModel
 
         private Task SearchGamesAsync()
         {
-            MessagingService.Current.SendMessage<MessagingServiceAlert>(MessageKeys.Message,
-                new MessagingServiceAlert
-                {
-                    Title = "Suche",
-                    Message = TextSearchInput,
-                    Cancel = "OK"
-                });
+            //TODO: Not compatible mit .net Standard 1.4
+            //MessagingService.Current.SendMessage<MessagingServiceAlert>(MessageKeys.Message,
+            //    new MessagingServiceAlert
+            //    {
+            //        Title = "Suche",
+            //        Message = TextSearchInput,
+            //        Cancel = "OK"
+            //    });
 
             return Task.FromResult(false);
         }
